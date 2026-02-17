@@ -17,6 +17,7 @@ Here is a primary button:
 <button class="btn-primary">Get Started</button>
 
 And some code:
-\`\`\`typescript
+
+```typescript
 console.log('Hello SecureByte');
-\`\`\`
+```
