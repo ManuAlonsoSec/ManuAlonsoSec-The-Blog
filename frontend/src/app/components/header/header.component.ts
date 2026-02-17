@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
-  styles: [`
-    .glass-header {
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-  `]
+  styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  mobileMenuOpen = signal(false);
+
+  toggleMenu(): void {
+    this.mobileMenuOpen.update(open => !open);
+  }
+
+  closeMenu(): void {
+    this.mobileMenuOpen.set(false);
+  }
+}

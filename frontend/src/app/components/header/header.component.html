@@ -5,13 +5,15 @@
         <span class="material-symbols-outlined text-primary text-3xl transition-transform group-hover:scale-110">shield</span>
         <span class="text-xl font-black tracking-tight text-white">Secure<span class="text-primary">Byte</span></span>
       </a>
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="desktop-nav items-center gap-8">
         <a routerLink="/posts/hello-world" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Posts</a>
         <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Categories</a>
         <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">About</a>
       </nav>
     </div>
-    <div class="flex items-center gap-6">
+
+    <!-- Desktop actions -->
+    <div class="desktop-actions items-center gap-6">
       <div class="hidden lg:flex items-center bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 focus-within:border-primary transition-all">
         <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
         <input class="bg-transparent border-none focus:ring-0 text-sm text-white placeholder:text-slate-500 w-48 focus:outline-none" placeholder="Search insights..." type="text"/>
@@ -20,5 +22,36 @@
         Subscribe
       </button>
     </div>
+
+    <!-- Hamburger button (mobile only) -->
+    <button class="hamburger-btn" (click)="toggleMenu()" aria-label="Open navigation menu">
+      <span class="material-symbols-outlined text-2xl">menu</span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile overlay -->
+<div
+  class="mobile-menu-overlay"
+  [class.visible]="mobileMenuOpen()"
+  (click)="closeMenu()">
+</div>
+
+<!-- Mobile drawer -->
+<nav class="mobile-menu-drawer" [class.open]="mobileMenuOpen()" aria-label="Mobile navigation">
+  <div class="drawer-header">
+    <a routerLink="/" class="flex items-center gap-2" (click)="closeMenu()">
+      <span class="material-symbols-outlined text-primary text-2xl">shield</span>
+      <span class="text-lg font-black text-white">Secure<span class="text-primary">Byte</span></span>
+    </a>
+    <button class="drawer-close" (click)="closeMenu()" aria-label="Close navigation menu">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+  </div>
+
+  <a class="mobile-nav-link" routerLink="/posts/hello-world" (click)="closeMenu()">Posts</a>
+  <a class="mobile-nav-link" href="#">Categories</a>
+  <a class="mobile-nav-link" href="#">About</a>
+
+  <button class="mobile-subscribe-btn">Subscribe</button>
+</nav>
