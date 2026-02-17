@@ -1,0 +1,46 @@
+<div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+  <!-- Main Content -->
+  <article class="lg:col-span-8">
+    <!-- Post Header -->
+    <div class="mb-8">
+        <div class="flex items-center gap-3 text-sm text-text-secondary mb-4">
+            <span class="px-3 py-1 bg-surface-dark border border-border-dark rounded-full font-medium text-primary">Analysis</span>
+            <span>•</span>
+            <span>5 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            {{ postTitle || 'Loading...' }}
+        </h1>
+    </div>
+
+    <!-- Markdown Body -->
+    <div class="markdown-content bg-surface/30 backdrop-blur-sm p-8 rounded-2xl border border-white/5">
+        <markdown 
+            [src]="postUrl" 
+            (load)="onLoad($event)" 
+            (error)="onError($event)">
+        </markdown>
+    </div>
+    
+    <!-- Tags -->
+    <div class="mt-8 flex flex-wrap gap-3">
+        <span class="px-4 py-1.5 bg-surface-dark border border-border-dark rounded-full text-xs font-medium hover:border-primary cursor-pointer transition-colors text-text-secondary hover:text-white">#Cryptography</span>
+        <span class="px-4 py-1.5 bg-surface-dark border border-border-dark rounded-full text-xs font-medium hover:border-primary cursor-pointer transition-colors text-text-secondary hover:text-white">#TechTrends</span>
+    </div>
+  </article>
+
+  <!-- Sidebar -->
+  <aside class="lg:col-span-4 flex flex-col gap-8">
+    <!-- Newsletter Signup -->
+    <section class="p-8 rounded-xl bg-surface-dark border border-border-dark relative overflow-hidden group">
+        <div class="absolute -right-12 -top-12 h-32 w-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+        <div class="relative z-10">
+            <span class="material-symbols-outlined text-primary text-4xl mb-4">mail</span>
+            <h3 class="text-xl font-bold text-white mb-2">Stay Secure</h3>
+            <p class="text-text-secondary text-sm mb-6">Get the latest security insights delivered to your inbox.</p>
+            <input type="email" placeholder="Enter your email" class="w-full bg-background border border-border-dark rounded-lg px-4 py-3 text-sm mb-4 focus:outline-none focus:border-primary text-white placeholder-text-secondary/50 transition-colors">
+            <button class="w-full btn-primary justify-center">Subscribe</button>
+        </div>
+    </section>
+  </aside>
+</div>

@@ -1,0 +1,24 @@
+<header class="fixed top-0 z-50 w-full border-b border-white/10 glass-header">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-10">
+      <a routerLink="/" class="flex items-center gap-2 group">
+        <span class="material-symbols-outlined text-primary text-3xl transition-transform group-hover:scale-110">shield</span>
+        <span class="text-xl font-black tracking-tight text-white">Secure<span class="text-primary">Byte</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a routerLink="/posts/hello-world" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Posts</a>
+        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Categories</a>
+        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">About</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="hidden lg:flex items-center bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 focus-within:border-primary transition-all">
+        <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+        <input class="bg-transparent border-none focus:ring-0 text-sm text-white placeholder:text-slate-500 w-48 focus:outline-none" placeholder="Search insights..." type="text"/>
+      </div>
+      <button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-all shadow-lg shadow-primary/20">
+        Subscribe
+      </button>
+    </div>
+  </div>
+</header>
