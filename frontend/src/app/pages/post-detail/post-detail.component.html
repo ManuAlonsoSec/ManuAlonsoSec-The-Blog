@@ -9,17 +9,18 @@
             <span>5 min read</span>
         </div>
         <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-            {{ postTitle || 'Loading...' }}
+            {{ postTitle() || 'Loading...' }}
         </h1>
     </div>
 
     <!-- Markdown Body -->
     <div class="markdown-content bg-surface/30 backdrop-blur-sm p-8 rounded-2xl border border-white/5">
-        <markdown 
-            [src]="postUrl" 
-            (load)="onLoad($event)" 
-            (error)="onError($event)">
-        </markdown>
+        @if (markdownContent()) {
+            <markdown
+                [data]="markdownContent()!"
+                [disableSanitizer]="true">
+            </markdown>
+        }
     </div>
     
     <!-- Tags -->

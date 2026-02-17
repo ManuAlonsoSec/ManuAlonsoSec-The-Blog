@@ -1,55 +1,64 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Meta, Title } from '@angular/platform-browser';
 import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-post-detail',
-  standalone: true,
-  imports: [CommonModule, MarkdownModule, RouterModule],
+  imports: [MarkdownModule, RouterModule],
   templateUrl: './post-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private http = inject(HttpClient);
   private meta = inject(Meta);
   private title = inject(Title);
-  
-  postUrl: string | null = null;
-  postTitle: string = '';
+
+  markdownContent = signal<string | null>(null);
+  postTitle = signal('');
+  postError = signal(false);
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
       if (slug) {
-        this.postUrl = `/assets/content/${slug}.md`;
+        this.loadPost(`/assets/content/${slug}.md`);
       }
     });
   }
 
-  onLoad(data: string) {
-    const frontmatterRegex = /^---\n([\s\S]*?)\n---/;
-    const match = data.match(frontmatterRegex);
+  private loadPost(url: string): void {
+    this.http.get(url, { responseType: 'text' }).subscribe({
+      next: (raw) => {
+        const frontmatterRegex = /^---\n([\s\S]*?)\n---\n?/;
+        const match = raw.match(frontmatterRegex);
 
-    if (match) {
-      const frontmatter = match[1];
-      const titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?$/m);
-      const descMatch = frontmatter.match(/description:\s*["']?(.*?)["']?$/m);
+        if (match) {
+          const frontmatter = match[1];
+          const titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?$/m);
+          const descMatch = frontmatter.match(/description:\s*["']?(.*?)["']?$/m);
 
-      if (titleMatch) {
-        this.postTitle = titleMatch[1];
-        this.title.setTitle(titleMatch[1]);
-        this.meta.updateTag({ name: 'title', content: titleMatch[1] });
+          if (titleMatch) {
+            this.postTitle.set(titleMatch[1]);
+            this.title.setTitle(titleMatch[1]);
+            this.meta.updateTag({ name: 'title', content: titleMatch[1] });
+          }
+          if (descMatch) {
+            this.meta.updateTag({ name: 'description', content: descMatch[1] });
+          }
+
+          // Strip frontmatter from the content
+          this.markdownContent.set(raw.replace(frontmatterRegex, ''));
+        } else {
+          this.markdownContent.set(raw);
+        }
+      },
+      error: () => {
+        this.postError.set(true);
+        this.postTitle.set('Post Not Found');
       }
-      if (descMatch) {
-        this.meta.updateTag({ name: 'description', content: descMatch[1] });
-      }
-    }
-  }
-
-  onError(error: any) {
-    console.error('Error loading markdown:', error);
-    this.postUrl = null; 
-    this.postTitle = 'Post Not Found';
+    });
   }
 }
