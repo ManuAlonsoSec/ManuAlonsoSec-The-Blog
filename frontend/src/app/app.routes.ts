@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/post-detail/post-detail.component').then(m => m.PostDetailComponent)
   },
   {
+    path: 'categorias',
+    loadComponent: () => import('./pages/categories/categories.component').then(m => m.CategoriesComponent)
+  },
+  {
     path: 'privacidad',
     loadComponent: () => import('./pages/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
   },
