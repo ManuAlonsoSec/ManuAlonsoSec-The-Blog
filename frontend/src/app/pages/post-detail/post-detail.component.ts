@@ -1,8 +1,8 @@
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Meta, Title } from '@angular/platform-browser';
 import { MarkdownModule } from 'ngx-markdown';
+import { PostsService, PostMeta } from '../../services/posts.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -12,52 +12,48 @@ import { MarkdownModule } from 'ngx-markdown';
 })
 export class PostDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  private http = inject(HttpClient);
+  private postsService = inject(PostsService);
   private meta = inject(Meta);
   private title = inject(Title);
 
   markdownContent = signal<string | null>(null);
-  postTitle = signal('');
+  postMeta = signal<PostMeta | null>(null);
   postError = signal(false);
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
       if (slug) {
-        this.loadPost(`/assets/content/${slug}.md`);
+        this.loadPost(slug);
       }
     });
   }
 
-  private loadPost(url: string): void {
-    this.http.get(url, { responseType: 'text' }).subscribe({
+  private loadPost(slug: string): void {
+    this.postsService.getPost(slug).subscribe({
       next: (raw) => {
-        const frontmatterRegex = /^---\n([\s\S]*?)\n---\n?/;
-        const match = raw.match(frontmatterRegex);
+        const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\n?/;
+        const parsed = this.postsService.parseFrontmatter(slug, raw);
+        this.postMeta.set(parsed);
 
-        if (match) {
-          const frontmatter = match[1];
-          const titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?$/m);
-          const descMatch = frontmatter.match(/description:\s*["']?(.*?)["']?$/m);
-
-          if (titleMatch) {
-            this.postTitle.set(titleMatch[1]);
-            this.title.setTitle(titleMatch[1]);
-            this.meta.updateTag({ name: 'title', content: titleMatch[1] });
-          }
-          if (descMatch) {
-            this.meta.updateTag({ name: 'description', content: descMatch[1] });
-          }
-
-          // Strip frontmatter from the content
-          this.markdownContent.set(raw.replace(frontmatterRegex, ''));
-        } else {
-          this.markdownContent.set(raw);
+        // Update browser meta tags
+        this.title.setTitle(parsed.title);
+        this.meta.updateTag({ name: 'title', content: parsed.title });
+        this.meta.updateTag({ name: 'description', content: parsed.description });
+        if (parsed.cover_image) {
+          this.meta.updateTag({ property: 'og:image', content: parsed.cover_image });
         }
+
+        // Strip frontmatter, then rewrite relative image paths to absolute
+        const body = raw.replace(frontmatterRegex, '');
+        this.markdownContent.set(this.postsService.rewriteImagePaths(slug, body));
       },
       error: () => {
         this.postError.set(true);
-        this.postTitle.set('Post Not Found');
+        this.postMeta.set({
+          slug, title: 'Post Not Found', description: '',
+          post_date: '', category: '', read_time: '', creator: '', cover_image: '',
+        });
       }
     });
   }
