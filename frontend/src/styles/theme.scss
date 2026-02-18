@@ -168,4 +168,20 @@ body {
       color: inherit;
     }
   }
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin: 1.5em auto;
+    display: block;
+  }
+
+  // Sized images emitted as raw <img> by rewriteImagePaths
+  .post-image {
+    border-radius: 0.75rem;
+    margin: 1.5em auto;
+    display: block;
+    height: auto; // overridden by inline style when WxH is specified
+  }
 }
+

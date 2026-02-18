@@ -3,12 +3,12 @@
     <div class="flex items-center gap-10">
       <a routerLink="/" class="flex items-center gap-2 group">
         <span class="material-symbols-outlined text-primary text-3xl transition-transform group-hover:scale-110">shield</span>
-        <span class="text-xl font-black tracking-tight text-white">Secure<span class="text-primary">Byte</span></span>
+        <span class="text-xl font-black tracking-tight text-white">ManuAlonso<span class="text-primary">Sec</span></span>
       </a>
       <nav class="desktop-nav items-center gap-8">
-        <a routerLink="/posts/hello-world" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Posts</a>
-        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Categories</a>
-        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">About</a>
+        <a routerLink="/" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Inicio</a>
+        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Categorías</a>
+        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Sobre mí</a>
       </nav>
     </div>
 
@@ -16,11 +16,11 @@
     <div class="desktop-actions items-center gap-6">
       <div class="hidden lg:flex items-center bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 focus-within:border-primary transition-all">
         <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
-        <input class="bg-transparent border-none focus:ring-0 text-sm text-white placeholder:text-slate-500 w-48 focus:outline-none" placeholder="Search insights..." type="text"/>
+        <input class="bg-transparent border-none focus:ring-0 text-sm text-white placeholder:text-slate-500 w-48 focus:outline-none" placeholder="Buscar..." type="text"/>
       </div>
-      <button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-all shadow-lg shadow-primary/20">
+      <!-- <button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2 px-5 rounded-lg transition-all shadow-lg shadow-primary/20">
         Subscribe
-      </button>
+      </button> -->
     </div>
 
     <!-- Hamburger button (mobile only) -->
@@ -42,16 +42,16 @@
   <div class="drawer-header">
     <a routerLink="/" class="flex items-center gap-2" (click)="closeMenu()">
       <span class="material-symbols-outlined text-primary text-2xl">shield</span>
-      <span class="text-lg font-black text-white">Secure<span class="text-primary">Byte</span></span>
+      <span class="text-lg font-black text-white">ManuAlonso<span class="text-primary">Sec</span></span>
     </a>
     <button class="drawer-close" (click)="closeMenu()" aria-label="Close navigation menu">
       <span class="material-symbols-outlined text-2xl">close</span>
     </button>
   </div>
 
-  <a class="mobile-nav-link" routerLink="/posts/hello-world" (click)="closeMenu()">Posts</a>
-  <a class="mobile-nav-link" href="#">Categories</a>
-  <a class="mobile-nav-link" href="#">About</a>
+  <a class="mobile-nav-link" routerLink="/" (click)="closeMenu()">Inicio</a>
+  <a class="mobile-nav-link" href="#">Categorías</a>
+  <a class="mobile-nav-link" href="#">Sobre mí</a>
 
-  <button class="mobile-subscribe-btn">Subscribe</button>
+  <!-- <button class="mobile-subscribe-btn">Subscribe</button> -->
 </nav>
