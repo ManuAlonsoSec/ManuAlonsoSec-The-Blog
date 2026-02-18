@@ -1,0 +1,107 @@
+<div class="w-full px-6 lg:w-1/2 lg:mx-auto py-12">
+
+  <!-- Back link -->
+  <a routerLink="/" class="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors mb-10">
+    <span class="material-symbols-outlined text-base">arrow_back</span>
+    Volver al inicio
+  </a>
+
+  <!-- Header -->
+  <div class="mb-10 pb-8 border-b border-white/10">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="material-symbols-outlined text-primary text-3xl">cookie</span>
+      <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-primary">Legal</span>
+    </div>
+    <h1 class="text-4xl font-black text-white leading-tight mb-3">Política de Cookies</h1>
+    <p class="text-text-secondary text-sm">Última actualización: 18 de febrero de 2026</p>
+  </div>
+
+  <!-- Content -->
+  <div class="space-y-10 text-text-secondary leading-relaxed">
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">1. ¿Qué son las cookies?</h2>
+      <p>
+        Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo cuando los visitas.
+        Se utilizan ampliamente para que los sitios funcionen correctamente, de forma más eficiente,
+        y para proporcionar información a los propietarios del sitio.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">2. Cookies que utilizamos</h2>
+
+      <!-- Cookie table -->
+      <div class="mt-4 rounded-xl overflow-hidden border border-white/10">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-white/5 text-white">
+              <th class="text-left px-4 py-3 font-semibold">Nombre</th>
+              <th class="text-left px-4 py-3 font-semibold">Tipo</th>
+              <th class="text-left px-4 py-3 font-semibold">Finalidad</th>
+              <th class="text-left px-4 py-3 font-semibold">Duración</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="px-4 py-3 font-mono text-primary text-xs">_session</td>
+              <td class="px-4 py-3">Técnica</td>
+              <td class="px-4 py-3">Mantener la sesión de navegación activa</td>
+              <td class="px-4 py-3">Sesión</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="px-4 py-3 font-mono text-primary text-xs">_ga</td>
+              <td class="px-4 py-3">Analítica</td>
+              <td class="px-4 py-3">Distinguir usuarios únicos (Google Analytics)</td>
+              <td class="px-4 py-3">2 años</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="px-4 py-3 font-mono text-primary text-xs">_ga_*</td>
+              <td class="px-4 py-3">Analítica</td>
+              <td class="px-4 py-3">Mantener el estado de la sesión de Analytics</td>
+              <td class="px-4 py-3">2 años</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">3. Tipos de cookies según su finalidad</h2>
+      <div class="space-y-4 mt-2">
+        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+          <h3 class="text-white font-semibold mb-1">🔧 Cookies técnicas (necesarias)</h3>
+          <p class="text-sm">Son imprescindibles para el funcionamiento del sitio. No requieren consentimiento.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+          <h3 class="text-white font-semibold mb-1">📊 Cookies analíticas</h3>
+          <p class="text-sm">Permiten medir el tráfico y analizar el comportamiento de los usuarios de forma anónima para mejorar el sitio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">4. Cómo gestionar las cookies</h2>
+      <p>
+        Puedes configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que desactivar
+        ciertas cookies puede afectar al funcionamiento del sitio. Aquí tienes los enlaces de configuración
+        de los navegadores más comunes:
+      </p>
+      <ul class="mt-4 space-y-2 pl-2">
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" class="text-primary underline hover:text-primary/80 transition-colors">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener" class="text-primary underline hover:text-primary/80 transition-colors">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener" class="text-primary underline hover:text-primary/80 transition-colors">Safari</a></li>
+        <li><a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener" class="text-primary underline hover:text-primary/80 transition-colors">Microsoft Edge</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-white mb-4">5. Más información</h2>
+      <p>
+        Para más información sobre cómo tratamos tus datos, consulta nuestra
+        <a routerLink="/privacidad" class="text-primary underline hover:text-primary/80 transition-colors">Política de Privacidad</a>.
+      </p>
+    </section>
+
+  </div>
+</div>
