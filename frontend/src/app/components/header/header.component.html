@@ -7,7 +7,7 @@
       </a>
       <nav class="desktop-nav items-center gap-8">
         <a routerLink="/" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Inicio</a>
-        <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Categorías</a>
+        <a routerLink="/categorias" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Categorías</a>
         <a href="#" class="text-sm font-semibold hover:text-primary transition-colors text-slate-300">Sobre mí</a>
       </nav>
     </div>
@@ -50,7 +50,7 @@
   </div>
 
   <a class="mobile-nav-link" routerLink="/" (click)="closeMenu()">Inicio</a>
-  <a class="mobile-nav-link" href="#">Categorías</a>
+  <a class="mobile-nav-link" routerLink="/categorias" (click)="closeMenu()">Categorías</a>
   <a class="mobile-nav-link" href="#">Sobre mí</a>
 
   <!-- <button class="mobile-subscribe-btn">Subscribe</button> -->
