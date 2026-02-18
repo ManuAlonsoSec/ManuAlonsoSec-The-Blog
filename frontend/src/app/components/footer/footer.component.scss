@@ -1,0 +1,22 @@
+/* ── Responsive footer: < 800px ── */
+@media (max-width: 800px) {
+  .footer-nav-column,
+  .footer-newsletter-column {
+    display: none;
+  }
+
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .footer-bottom-links {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+  <!-- Shield Background (Left half) -->
+  <path fill="#ce0fc7" d="M125 30L31.9 63.2l14.2 123.1L125 230l78.9-43.7 14.2-123.1L125 30z"/>
+  <!-- Shield Shading (Right half) -->
+  <path fill="#a80ba1" d="M125 30v200l78.9-43.7 14.2-123.1L125 30z"/>
+  <!-- Letter M -->
+  <path fill="white" d="M70 180V70h25l30 60 30-60h25v110h-20V95l-35 70h-5l-35-70v85H70z"/>
+</svg>
