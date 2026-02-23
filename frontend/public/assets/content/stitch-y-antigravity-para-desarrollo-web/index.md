@@ -27,7 +27,7 @@ Como he comentado en el párrafo anterior, hoy en día uno de los usos más exte
 
 Un IDE es un programa usado para crear código de manera más sencilla y con herramientas que asisten en gran medida al crear programas. Algunos ejemplos de IDE pueden ser Visual Studio Code, PyCharm, IntelliJ IDEA, etc.
 
-Pero, desde principios de 2025, un IDE que incorporaba la inteligencia artificial en el flujo de trabajo habitual comenzó a ganar popularidad. Este IDE se llama [Cursor](https://cursor.com/). Esto revolucionó por completo la forma en la que el mundo utilizaba la inteligencia artificial a la hora de programar. Con este programa, la IA pasó de ser un ayudante al programador a convertirse en un programador al completo. Y, gracias a este programa, el concepto de *Vive coder*salió a la luz. Un Vive Coder se le denomina a cualquier persona (con conocimientos de programación o no) que utiliza la IA para programar el 100% de los proyectos que crea. Desde entonces, crear cualquier proyecto no se convertía en cuestión de poseer los conocimientos necesarios para programar las funcionalidades requeridas, sino que era posible crear aplicaciones completas sin tocar una sola línea de código.
+Pero, desde principios de 2025, un IDE que incorporaba la inteligencia artificial en el flujo de trabajo habitual comenzó a ganar popularidad. Este IDE se llama [Cursor](https://cursor.com/). Esto revolucionó por completo la forma en la que el mundo utilizaba la inteligencia artificial a la hora de programar. Con este programa, la IA pasó de ser un ayudante al programador a convertirse en un programador al completo. Y, gracias a este programa, el concepto de _Vive coder_ salió a la luz. Un Vive Coder se le denomina a cualquier persona (con conocimientos de programación o no) que utiliza la IA para programar el 100% de los proyectos que crea. Desde entonces, crear cualquier proyecto no se convertía en cuestión de poseer los conocimientos necesarios para programar las funcionalidades requeridas, sino que era posible crear aplicaciones completas sin tocar una sola línea de código.
 
 # Mi experiencia con los IDE con IA
 
@@ -63,9 +63,10 @@ Una vez tenemos este diseño es posible comenzar con la implementación de la we
 
 Con el diseño preparado existen dos opciones para usarlo en Antigravity:
 
-Exportar las ventanas que ha creado
-Instalar el servidor MCP de Stitch en Antigravity y que se comuniquen directamente entre ellos.
-En mi caso escogí la segunda opción. La escogí principalmente para tener la oportunidad de trabajar con servidores MCP. Estos servidores generan una especie de API (Application Programming Interface) que permite a dos servicios comunicarse entre ellos para realizar tareas simples, como por ejemplo obtener los diseños ya exportados y en un lenguaje que Antigravity entienda. Pero antes de comenzar a pedirle que programe nada también es necesario instalar las habilidades (skills) necesarias. Estas habilidades las proporciona el repositorio de Github: (link a repositorio). Donde, directamente se le puede pedir a Antigravity que instale estas skills para que puedan ser usadas en el proyecto.
+1. Exportar las ventanas que ha creado
+2. Instalar el servidor MCP de Stitch en Antigravity y que se comuniquen directamente entre ellos.
+
+En mi caso escogí la segunda opción. La escogí principalmente para tener la oportunidad de trabajar con servidores MCP. Estos servidores generan una especie de API (Application Programming Interface) que permite a dos servicios comunicarse entre ellos para realizar tareas simples, como por ejemplo obtener los diseños ya exportados y en un lenguaje que Antigravity entienda. Pero antes de comenzar a pedirle que programe nada también es necesario instalar las habilidades (skills) necesarias. Estas habilidades las proporciona el repositorio de Github: [stitch-skills](https://github.com/google-labs-code/stitch-skills). En este repositorio, directamente se le puede pedir a Antigravity que instale estas skills para que puedan ser usadas en el proyecto.
 
 Una vez que tenemos el servidor MCP y las habilidades bien configuradas podemos pedirle que, a partir del diseño de Stitch, nos cree una página web. En este caso, yo elegí que la web la crease utilizando el framework de Angular 21 debido a que tengo amplia experiencia con este marco de trabajo. Pero es posible pedirle cualquier otro framework o en html básico.
 
@@ -77,14 +78,15 @@ Una vez con la idea base ya programada, era posible comenzar a implementar funci
 
 Otra cosa que le pedí fue la creación de los tres textos legales que requieren la mayoría de páginas web:
 
-Términos y condiciones
-Política de Privacidad
-Política de Cookies
+- Términos y condiciones
+- Política de Privacidad
+- Política de Cookies
+
 Me sorprendió gratamente cuando revisé los cambios que realizó con este prompt y vi que había redactado por su cuenta la mayoría de textos legales y en general eran correctos.
 
 ## Escritura de los artículos
 
-Quería que fuese una página lo más sencilla posible y también lo más sencilla de hacer cambios. Por eso, las páginas de los artículos no contienen texto HTML en ellas; sino que, utilizando la librería `ngx-markdown´, el contenido de los ficheros .md es renderizado y convertido a HTML en el servidor cuando el usuario pide visitar ese artículo (gracias a SSR).
+Quería que fuese una página lo más sencilla posible y también lo más sencilla de hacer cambios. Por eso, las páginas de los artículos no contienen texto HTML en ellas; sino que, utilizando la librería `ngx-markdown`, el contenido de los ficheros .md es renderizado y convertido a HTML en el servidor cuando el usuario pide visitar ese artículo (gracias a SSR).
 
 Por lo que, escribir los artículos es posible desde cualquier editor de texto y solamente necesito pegar el texto creado en un archivo y guardarlo en la carpeta donde se encuentran todos los artículos con una estructura y una convención de nombres específica.
 
