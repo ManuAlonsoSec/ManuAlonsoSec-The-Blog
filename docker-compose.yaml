@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: sec-blog:latest
+    container_name: it-blog-frontend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - it-blog-network
+
+networks:
+  it-blog-network:
+    driver: bridge
