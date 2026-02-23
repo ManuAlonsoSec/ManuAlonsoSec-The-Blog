@@ -1,20 +1,20 @@
 <!-- Hero Section: Featured Analysis -->
 <section class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
-  <div class="relative rounded-3xl overflow-hidden bg-surface-dark border border-white/10 group cursor-pointer transition-all hover:border-primary/50">
+  <div class="relative rounded-3xl overflow-hidden bg-surface-dark border border-white/10 group transition-all hover:border-primary/50">
     <div class="grid lg:grid-cols-2 gap-8 items-center p-8 lg:p-12 relative z-10">
       <div class="space-y-6">
         <div class="flex items-center gap-3">
-          <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-primary">Featured Analysis</span>
-          <span class="text-text-secondary text-sm">Oct 24, 2024</span>
+          <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-primary">Artículo Recomendado</span>
+          <span class="text-text-secondary text-sm">18/02/2026</span>
         </div>
         <h1 class="text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
-          The Future of <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">Zero Trust</span> Architecture
+          Cómo utilizar <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">Stitch y Antigravity</span> para crear una página web desde cero en unas pocas horas
         </h1>
         <p class="text-lg text-text-secondary leading-relaxed max-w-xl">
-          Exploring the shift towards identity-centric security models in a perimeter-less world. Learn why traditional firewalls are becoming obsolete in 2024.
+          Descubre cómo Stitch y Antigravity pueden ayudarte a crear una página web desde cero en unas pocas horas.
         </p>
         <div class="pt-4">
-          <a routerLink="/posts/hello-world" class="btn-primary">
+          <a routerLink="/posts/hello-world" class="btn-primary after:absolute after:inset-0">
             Leer publicación destacada
             <span class="material-symbols-outlined">arrow_forward</span>
           </a>
@@ -50,7 +50,7 @@
 
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     @for (post of posts(); track post.slug) {
-      <article class="group bg-surface-dark border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors flex flex-col h-full">
+      <article class="group relative bg-surface-dark border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors flex flex-col h-full">
         <div class="h-48 relative overflow-hidden">
            @if (post.cover_image) {
              <img
@@ -74,7 +74,7 @@
              <span class="text-xs text-text-secondary">{{ post.read_time }}</span>
           </div>
           <h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
-              <a [routerLink]="['/posts', post.slug]">{{ post.title }}</a>
+              <a [routerLink]="['/posts', post.slug]" class="after:absolute after:inset-0">{{ post.title }}</a>
           </h3>
           <p class="text-text-secondary text-sm line-clamp-3 mb-6 flex-grow">
               {{ post.description }}
