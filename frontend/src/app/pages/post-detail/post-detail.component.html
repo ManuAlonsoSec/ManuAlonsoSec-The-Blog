@@ -44,7 +44,8 @@
         @if (markdownContent()) {
             <markdown
                 [data]="markdownContent()!"
-                [disableSanitizer]="true">
+                [disableSanitizer]="true"
+                (ready)="wrapTables()">
             </markdown>
         }
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { MarkdownModule } from 'ngx-markdown';
@@ -15,6 +15,7 @@ export class PostDetailComponent implements OnInit {
   private postsService = inject(PostsService);
   private meta = inject(Meta);
   private title = inject(Title);
+  private el = inject(ElementRef);
 
   markdownContent = signal<string | null>(null);
   postMeta = signal<PostMeta | null>(null);
@@ -26,6 +27,25 @@ export class PostDetailComponent implements OnInit {
       if (slug) {
         this.loadPost(slug);
       }
+    });
+  }
+
+  /**
+   * Called by (ready) on the <markdown> element.
+   * Wraps every <table> inside .markdown-content with a div.table-wrapper
+   * so horizontal scroll is scoped to the table only, not the whole page.
+   */
+  wrapTables(): void {
+    const host: HTMLElement = this.el.nativeElement;
+    const tables = host.querySelectorAll<HTMLTableElement>('.markdown-content table');
+    tables.forEach(table => {
+      // Skip if already wrapped
+      if (table.parentElement?.classList.contains('table-wrapper')) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentNode!.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
     });
   }
 
